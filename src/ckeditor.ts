@@ -7,15 +7,13 @@ import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
 
 import { Alignment } from '@ckeditor/ckeditor5-alignment';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
-import { Bold, Code, Italic } from '@ckeditor/ckeditor5-basic-styles';
-import { BlockQuote } from '@ckeditor/ckeditor5-block-quote';
+import { Bold, Code, Italic, Underline } from '@ckeditor/ckeditor5-basic-styles';
 import { CloudServices } from '@ckeditor/ckeditor5-cloud-services';
 import { CodeBlock } from '@ckeditor/ckeditor5-code-block';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { FontBackgroundColor, FontColor, FontFamily, FontSize } from '@ckeditor/ckeditor5-font';
-import { Heading, Title } from '@ckeditor/ckeditor5-heading';
+import { Heading } from '@ckeditor/ckeditor5-heading';
 import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
-import { GeneralHtmlSupport } from '@ckeditor/ckeditor5-html-support';
 import {
 	AutoImage,
 	Image,
@@ -32,7 +30,6 @@ import { List } from '@ckeditor/ckeditor5-list';
 import { MediaEmbed } from '@ckeditor/ckeditor5-media-embed';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 import { PasteFromOffice } from '@ckeditor/ckeditor5-paste-from-office';
-import { Style } from '@ckeditor/ckeditor5-style';
 import {
 	Table,
 	TableCellProperties,
@@ -41,6 +38,7 @@ import {
 	TableToolbar
 } from '@ckeditor/ckeditor5-table';
 import { TextTransformation } from '@ckeditor/ckeditor5-typing';
+import { SimpleUploadAdapter } from '@ckeditor/ckeditor5-upload';
 
 // You can read more about extending the build with additional plugins in the "Installing plugins" guide.
 // See https://ckeditor.com/docs/ckeditor5/latest/installation/plugins/installing-plugins.html for details.
@@ -51,7 +49,6 @@ class Editor extends ClassicEditor {
 		AutoImage,
 		AutoLink,
 		Autoformat,
-		BlockQuote,
 		Bold,
 		CloudServices,
 		Code,
@@ -61,7 +58,6 @@ class Editor extends ClassicEditor {
 		FontColor,
 		FontFamily,
 		FontSize,
-		GeneralHtmlSupport,
 		Heading,
 		HorizontalLine,
 		Image,
@@ -78,35 +74,40 @@ class Editor extends ClassicEditor {
 		MediaEmbed,
 		Paragraph,
 		PasteFromOffice,
-		Style,
+		SimpleUploadAdapter,
 		Table,
 		TableCellProperties,
 		TableColumnResize,
 		TableProperties,
 		TableToolbar,
 		TextTransformation,
-		Title
+		Underline
 	];
 
 	public static override defaultConfig = {
 		toolbar: {
 			items: [
 				'heading',
-				'|',
 				'bold',
 				'italic',
+				'underline',
 				'link',
 				'bulletedList',
 				'numberedList',
-				'imageUpload',
-				'blockQuote',
+				'|',
+				'outdent',
+				'indent',
+				'|',
 				'insertTable',
 				'mediaEmbed',
 				'undo',
 				'redo',
+				'fontColor',
 				'fontBackgroundColor',
-				'imageInsert',
-				'style'
+				'fontSize',
+				'alignment',
+				'fontFamily',
+				'imageInsert'
 			]
 		},
 		language: 'en-au',
